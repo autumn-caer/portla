@@ -3,7 +3,7 @@ services:
   front:
     build: ./
     container_name: node
-    command: sh -c 'cd /front/frontend && yarn start'
+    command: sh -c 'cd /front && yarn start'
     volumes:
       - ./front:/front
     working_dir: /front
