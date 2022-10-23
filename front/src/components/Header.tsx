@@ -25,7 +25,7 @@ const Header: React.FC = () => {
         <Flex w="40vw">
           <Spacer />
           <Box>
-            <Text fontSize="4xl">PORTLA</Text>
+            <Text fontSize="4xl">MIRAIDO</Text>
           </Box>
 
           <Spacer />
