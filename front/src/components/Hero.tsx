@@ -51,20 +51,21 @@ const Hero: React.FC = () => {
   }, [showHero]);
 
   return (
-    <Box w="100vw" h="100vh" p="40px">
-      {slides.map((slide) => {
-        return (
-          <HeroSlide
-            title={slide.title}
-            imageUrl={slide.imageUrl}
-            slideNo={slide.slideNo}
-            showSlide={showHero === slide.slideNo}
-            category={slide.category}
-            key={slide.slideNo}
-          />
-        );
-      })}
-
+    <Box w="100vw" p="40px">
+      <Box>
+        {slides.map((slide) => {
+          return (
+            <HeroSlide
+              title={slide.title}
+              imageUrl={slide.imageUrl}
+              slideNo={slide.slideNo}
+              showSlide={showHero === slide.slideNo}
+              category={slide.category}
+              key={slide.slideNo}
+            />
+          );
+        })}
+      </Box>
       <Box>
         {slides.map((slide) => {
           const percent = slide.slideNo === showHero ? remainTime : 0;
