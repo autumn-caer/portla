@@ -1,5 +1,13 @@
 import React, { useRef, useMemo } from "react";
-import { Box, Flex, Image, Grid, GridItem } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Image,
+  Grid,
+  GridItem,
+  Button,
+  Center,
+} from "@chakra-ui/react";
 import Article from "./Article";
 import map_image from "../images/FH000009-1000x670.jpeg";
 
@@ -89,34 +97,47 @@ const VerticalArticles: React.FC = () => {
     },
   ];
   return (
-    <Flex w="100vw" h="310vh" p="40px">
-      <Box w="50%" m="10px">
-        <div
-          ref={iconRef}
-          style={{
-            width: `100px`,
-            height: `${iconSize}px`,
-          }}
-        />
-        <Image src={map_image} alt="Dan Abramov" />
-      </Box>
-      <Box w="50%" m="10px">
-        <Grid templateColumns="repeat(2, 1fr)" gap={1}>
-          {articless.map((article, index) => {
-            return (
-              <GridItem mb="10px" key={index}>
-                <Article
-                  title={article.title}
-                  imageUrl={article.imageUrl}
-                  category={article.category}
-                  genre={article.genre}
-                />
-              </GridItem>
-            );
-          })}
-        </Grid>
-      </Box>
-    </Flex>
+    <Box w="100vw">
+      <Flex w="100vw" h="200vh" p="40px">
+        <Box w="50%" m="10px">
+          <div
+            ref={iconRef}
+            style={{
+              width: `100px`,
+              height: `${iconSize}px`,
+            }}
+          />
+          <Image src={map_image} alt="Dan Abramov" />
+        </Box>
+        <Box w="50%" m="10px">
+          <Grid templateColumns="repeat(2, 1fr)" gap={1}>
+            {articless.map((article, index) => {
+              return (
+                <GridItem mb="10px" key={index}>
+                  <Article
+                    title={article.title}
+                    imageUrl={article.imageUrl}
+                    category={article.category}
+                    genre={article.genre}
+                  />
+                </GridItem>
+              );
+            })}
+          </Grid>
+        </Box>
+      </Flex>
+      <Center w="100%" h="30vh">
+        <Button
+          as="a"
+          href="https://google.com"
+          rounded="3xl"
+          size="lg"
+          colorScheme="blackAlpha"
+        >
+          view more
+        </Button>
+      </Center>
+    </Box>
   );
 };
 
