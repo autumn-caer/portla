@@ -1,0 +1,13 @@
+.text {
+    /*wrapperの中身を上下中央揃え*/
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 400px !important;
+    height: 50px !important;
+    background-color: '#fff';
+    text-align: center;
+}

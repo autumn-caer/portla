@@ -5,6 +5,7 @@ import { theme } from "./Theme";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import VerticalArticles from "./components/VerticalArticles";
+import SlideArticles from "./components/SlideArticles";
 
 function App(): JSX.Element {
   return (
@@ -13,6 +14,7 @@ function App(): JSX.Element {
         <Header />
         <Hero />
         <VerticalArticles />
+        <SlideArticles />
       </div>
     </ChakraProvider>
   );
