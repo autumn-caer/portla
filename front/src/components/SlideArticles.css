@@ -11,3 +11,37 @@
     background-color: '#fff';
     text-align: center;
 }
+
+.arrow {
+    position: relative;
+    display: inline-block;
+    padding: 10px;
+}
+
+.arrow::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-top: solid 2px white;
+    border-right: solid 2px white;
+    position: absolute;
+    left: 10px;
+    top: 8px;
+}
+
+.arrow.arrow-top::before {
+    transform: rotate(-45deg);
+    top: 10px;
+}
+
+.arrow.arrow-bottom::before {
+    transform: rotate(135deg);
+}
+
+.arrow.arrow-left::before {
+    transform: rotate(-135deg);
+}
+
+.arrow.arrow-right::before {
+    transform: rotate(45deg);
+}

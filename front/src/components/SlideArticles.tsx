@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { Box, keyframes, usePrefersReducedMotion } from "@chakra-ui/react";
+import {
+  Text,
+  Box,
+  keyframes,
+  usePrefersReducedMotion,
+} from "@chakra-ui/react";
 // import Article from "./Article";
 import map_image from "../images/FH000009-1000x670.jpeg";
 import "./SlideArticles.css";
@@ -29,7 +34,12 @@ const fadeOut = keyframes`
   100%{ opacity: 0;   }
 `;
 
-const slideImages = [map_image, hero_image, antena_image, zine_image];
+const slides = [
+  { title: "aa", description: "aa_description", image: map_image },
+  { title: "bb", description: "bb_description", image: hero_image },
+  { title: "cc", description: "cc_description", image: antena_image },
+  { title: "dd", description: "dd_description", image: zine_image },
+];
 
 const SlideArticles: React.FC = () => {
   const [slideImageIndex, setSlideImageIndex] = useState<number>(0);
@@ -45,31 +55,72 @@ const SlideArticles: React.FC = () => {
 
   return (
     <Box w="100vw" h="40vw" overflow="hidden" position="relative">
-      {slideImages.map((slide, index) => {
+      {slides.map((slide, index) => {
         return (
-          <Box
-            key={index}
-            position="absolute"
-            h="550px"
-            minHeight="550px"
-            width="100%"
-            animation={
-              slideImageIndex === index ? fadeInAnimation : fadeOutAnimation
-            }
-            backgroundImage={slide}
-            backgroundSize="cover"
-            backgroundPosition="center"
-            backgroundRepeat="no-repeat"
-            onAnimationIteration={() =>
-              setSlideImageIndex(
-                index >= slideImages.length - 1 ? 0 : index + 1
-              )
-            }
-          >
-            <Box className="text" w="100vw" h="50vw" bgSize="cover">
-              heresssaaa: {index}
+          <>
+            <Box
+              key={index}
+              position="absolute"
+              h="550px"
+              minHeight="550px"
+              width="100%"
+              animation={
+                slideImageIndex === index ? fadeInAnimation : fadeOutAnimation
+              }
+              backgroundImage={slide.image}
+              backgroundSize="cover"
+              backgroundPosition="center"
+              backgroundRepeat="no-repeat"
+              zIndex="-1"
+              onAnimationIteration={() =>
+                setSlideImageIndex(index >= slides.length - 1 ? 0 : index + 1)
+              }
+            ></Box>
+            <Box
+              marginTop="300px"
+              display={slideImageIndex === index ? "block" : "none"}
+            >
+              <Text marginLeft="200px" fontSize="4xl" color="white">
+                {slide.title}
+              </Text>
+
+              <Text
+                marginTop="50px"
+                marginLeft="200px"
+                fontSize="md"
+                color="white"
+                width="400px"
+              >
+                {slide.description}
+              </Text>
+              <Box marginLeft="190px" marginTop="50px">
+                <Box
+                  className="arrow arrow-left"
+                  onClick={() => {
+                    setSlideImageIndex(
+                      index === 0 ? slides.length - 1 : index - 1
+                    );
+                  }}
+                ></Box>
+                <Box
+                  color="white"
+                  display="inline-block"
+                  marginLeft="10px"
+                  marginBottom="20x"
+                >
+                  {slideImageIndex + 1} / {slides.length}
+                </Box>
+                <Box
+                  className="arrow arrow-right"
+                  onClick={() => {
+                    setSlideImageIndex(
+                      index >= slides.length - 1 ? 0 : index + 1
+                    );
+                  }}
+                ></Box>
+              </Box>
             </Box>
-          </Box>
+          </>
         );
       })}
     </Box>
