@@ -4,7 +4,7 @@ import { VStack, Image, Text, Box, Tag, TagLabel } from "@chakra-ui/react";
 interface ArticleProps {
   title: string;
   imageUrl: string;
-  category: string;
+  category?: string;
   genre: string;
 }
 
@@ -19,9 +19,11 @@ const Article: React.FC<ArticleProps> = ({
       <Box>
         <Image src={imageUrl} alt="Dan Abramov" />
       </Box>
-      <Text fontSize="md" color="#b34023">
-        {category}
-      </Text>
+      {category && (
+        <Text fontSize="md" color="#b34023">
+          {category}
+        </Text>
+      )}
       <Text fontSize="md" as="b">
         {title}
       </Text>
