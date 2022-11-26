@@ -1,5 +1,12 @@
-import React from "react";
-import { Box, Flex, Text, Spacer } from "@chakra-ui/react";
+import React, { useRef } from "react";
+import {
+  Box,
+  Flex,
+  Text,
+  Spacer,
+  CircularProgress,
+  CircularProgressLabel,
+} from "@chakra-ui/react";
 import Article from "./Article";
 import "./SlideArticles.css";
 import Slider from "react-slick";
@@ -33,6 +40,8 @@ const HorizontalArticles: React.FC<horizontalArticlesProps> = ({
     arrows: false,
   };
 
+  const sliderRef = useRef<Slider | null>(null);
+
   return (
     <Box
       w="100vw"
@@ -47,6 +56,55 @@ const HorizontalArticles: React.FC<horizontalArticlesProps> = ({
           <Text fontSize="5xl" marginBottom="3vw">
             {title}
           </Text>
+
+          <Box marginLeft="30vw" marginRight="5vw" marginTop="50px">
+            <Box
+              position="relative"
+              display="inline-block"
+              padding="10px"
+              marginRight="2vw"
+              cursor="pointer"
+              onClick={() => sliderRef?.current?.slickPrev()}
+              _before={{
+                content: `""`,
+                width: "20px",
+                height: "20px",
+                borderTop: "2px solid white",
+                borderRight: "solid 2px white",
+                position: "absolute",
+                transform: "rotate(-135deg)",
+              }}
+            ></Box>
+            <Box
+              position="relative"
+              display="inline-block"
+              padding="10px"
+              className="arrow arrow-right"
+              cursor="pointer"
+              onClick={() => sliderRef?.current?.slickNext()}
+              _before={{
+                content: `""`,
+                width: "20px",
+                height: "20px",
+                borderTop: "2px solid white",
+                borderRight: "solid 2px white",
+                position: "absolute",
+                transform: "rotate(45deg)",
+              }}
+            ></Box>
+          </Box>
+
+          <CircularProgress
+            value={100}
+            color="#7c7c7c"
+            thickness="1px"
+            size={120}
+            cursor="pointer"
+          >
+            <CircularProgressLabel fontSize={20} color={fontColor}>
+              More
+            </CircularProgressLabel>
+          </CircularProgress>
           <Spacer />
         </Flex>
         <Text>{description}</Text>
@@ -68,7 +126,7 @@ const HorizontalArticles: React.FC<horizontalArticlesProps> = ({
             },
           }}
         >
-          <Slider {...slickSettings}>
+          <Slider {...slickSettings} ref={sliderRef}>
             {articles.map((article: article, index: number) => {
               return (
                 <Article
