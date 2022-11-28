@@ -8,7 +8,6 @@ import {
   CircularProgressLabel,
 } from "@chakra-ui/react";
 import Article from "./Article";
-import "./SlideArticles.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

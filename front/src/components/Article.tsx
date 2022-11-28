@@ -24,9 +24,7 @@ const Article: React.FC<ArticleProps> = ({
           {category}
         </Text>
       )}
-      <Text fontSize="md" as="b">
-        {title}
-      </Text>
+      <Text fontSize="md">{title}</Text>
       <Box display="flex" alignItems="left" w="100%">
         <Tag
           size="sm"

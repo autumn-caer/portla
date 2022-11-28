@@ -57,9 +57,8 @@ const SlideArticles: React.FC = () => {
     <Box w="100vw" h="40vw" overflow="hidden" position="relative">
       {slides.map((slide, index) => {
         return (
-          <>
+          <Box key={index}>
             <Box
-              key={index}
               position="absolute"
               h="550px"
               minHeight="550px"
@@ -120,7 +119,7 @@ const SlideArticles: React.FC = () => {
                 ></Box>
               </Box>
             </Box>
-          </>
+          </Box>
         );
       })}
     </Box>
