@@ -8,7 +8,7 @@ import VerticalArticles from "./components/VerticalArticles";
 import SlideArticles from "./components/SlideArticles";
 import HorizontalArticles from "./components/HorizontalArticles";
 import LaneArticles from "./components/LaneArticles";
-
+import HorizontalWithMediumImageArticles from "./components/HorizontalWithMediumImageArticles";
 import map_image from "./images/FH000009-1000x670.jpeg";
 import { article } from "./interfaces";
 
@@ -190,6 +190,13 @@ function App(): JSX.Element {
           title="POPULAR"
           description="いま、読まれている記事"
           backgroundColor="white"
+        />
+        <HorizontalWithMediumImageArticles
+          articles={horizontalArticles}
+          title="ANTENNA"
+          description="いま、少し考えてみる"
+          backgroundColor="#434343"
+          fontColor="white"
         />
       </div>
     </ChakraProvider>
