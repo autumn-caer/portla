@@ -3,6 +3,7 @@ import "./App.css";
 import { ChakraProvider } from "@chakra-ui/react";
 import { theme } from "./Theme";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import VerticalArticles from "./components/VerticalArticles";
 import SlideArticles from "./components/SlideArticles";
@@ -198,6 +199,7 @@ function App(): JSX.Element {
           backgroundColor="#434343"
           fontColor="white"
         />
+        <Footer />
       </div>
     </ChakraProvider>
   );
