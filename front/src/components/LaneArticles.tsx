@@ -52,7 +52,19 @@ const LaneArticles: React.FC<horizontalArticlesProps> = ({
         <Text>{description}</Text>
       </Box>
 
-      <Flex>
+      <Stack display={{ base: "flex", sm: "flex", md: "flex", lg: "none" }}>
+        {articles.map((article: article, index: number) => {
+          return (
+            <HArticle
+              key={index}
+              title={article.title}
+              imageUrl={article.imageUrl}
+              genre={article.genre}
+            />
+          );
+        })}
+      </Stack>
+      <Flex display={{ base: "none", sm: "none", md: "none", lg: "flex" }}>
         <Stack>
           {leftArticles.map((article: article, index: number) => {
             return (

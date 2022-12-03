@@ -37,6 +37,34 @@ const HorizontalArticles: React.FC<horizontalArticlesProps> = ({
     pauseOnHover: true,
     centerMode: true,
     arrows: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+          centerMode: false,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerMode: false,
+        },
+      },
+    ],
   };
 
   const sliderRef = useRef<Slider | null>(null);
@@ -51,12 +79,22 @@ const HorizontalArticles: React.FC<horizontalArticlesProps> = ({
       color={fontColor}
     >
       <Box marginBottom="5vw">
-        <Flex>
-          <Text fontSize="5xl" marginBottom="3vw">
+        <Flex
+          flexDirection={{ base: "column", sm: "column", md: "row", lg: "row" }}
+        >
+          <Text
+            fontSize={{ base: "4xl", sm: "4xl", md: "5xl", lg: "5xl" }}
+            marginBottom="3vw"
+          >
             {title}
           </Text>
 
-          <Box marginLeft="30vw" marginRight="5vw" marginTop="50px">
+          <Box
+            marginLeft="30vw"
+            marginRight="5vw"
+            marginTop="50px"
+            display={{ base: "none", sm: "none", md: "none", lg: "block" }}
+          >
             <Box
               position="relative"
               display="inline-block"
@@ -99,6 +137,7 @@ const HorizontalArticles: React.FC<horizontalArticlesProps> = ({
             thickness="1px"
             size={120}
             cursor="pointer"
+            display={{ base: "none", sm: "none", md: "none", lg: "block" }}
           >
             <CircularProgressLabel fontSize={20} color={fontColor}>
               More
