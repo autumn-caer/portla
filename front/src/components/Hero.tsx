@@ -51,7 +51,7 @@ const Hero: React.FC = () => {
   }, [showHero]);
 
   return (
-    <Box w="100vw" p={{ base: "5px", sm: "5px", md: "40px", lg: "40px" }}>
+    <Box w="100vw" p={{ base: "20px", sm: "20px", md: "40px", lg: "40px" }}>
       <Box>
         {slides.map((slide) => {
           return (
