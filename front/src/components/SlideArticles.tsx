@@ -54,7 +54,12 @@ const SlideArticles: React.FC = () => {
     : `${fadeOut} 5s linear forwards`;
 
   return (
-    <Box w="100vw" h="40vw" overflow="hidden" position="relative">
+    <Box
+      w="100vw"
+      h={{ base: "130vw", sm: "130vw", md: "40vw", lg: "40vw" }}
+      overflow="hidden"
+      position="relative"
+    >
       {slides.map((slide, index) => {
         return (
           <Box overflow="hidden" key={index}>
@@ -76,23 +81,50 @@ const SlideArticles: React.FC = () => {
               }
             ></Box>
             <Box
-              marginTop="300px"
+              marginTop={{
+                base: "100px",
+                sm: "100px",
+                md: "300px",
+                lg: "300px",
+              }}
               display={slideImageIndex === index ? "block" : "none"}
             >
-              <Text marginLeft="200px" fontSize="4xl" color="white">
+              <Text
+                marginLeft={{
+                  base: "30px",
+                  sm: "30px",
+                  md: "200px",
+                  lg: "200px",
+                }}
+                fontSize="4xl"
+                color="white"
+              >
                 {slide.title}
               </Text>
 
               <Text
                 marginTop="50px"
-                marginLeft="200px"
+                marginLeft={{
+                  base: "30px",
+                  sm: "30px",
+                  md: "200px",
+                  lg: "200px",
+                }}
                 fontSize="md"
                 color="white"
                 width="400px"
               >
                 {slide.description}
               </Text>
-              <Box marginLeft="190px" marginTop="50px">
+              <Box
+                marginLeft={{
+                  base: "30px",
+                  sm: "30px",
+                  md: "190px",
+                  lg: "190px",
+                }}
+                marginTop="50px"
+              >
                 <Box
                   className="arrow arrow-left"
                   onClick={() => {
