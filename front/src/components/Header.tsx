@@ -98,7 +98,6 @@ const Header: React.FC = () => {
 
       <Flex
         w="100vw"
-        h="20vh"
         animation={isHeaderActive ? fadeInAnimation : fadeOutAnimation}
         zIndex={10000}
       >
