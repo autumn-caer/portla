@@ -10,7 +10,6 @@ import {
 } from "@chakra-ui/react";
 
 import { SearchIcon, HamburgerIcon } from "@chakra-ui/icons";
-
 import { useHeaderScroll } from "../hooks/useHeaderScroll";
 
 const fadeOut = keyframes`
@@ -24,6 +23,11 @@ const fadeIn = keyframes`
   to   { opacity:1;}
 `;
 
+// interface ModalProps {
+//   isOpen: boolean;
+//   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+// }
+
 const Header: React.FC = () => {
   const { isHeaderActive } = useHeaderScroll(300);
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -36,11 +40,13 @@ const Header: React.FC = () => {
     ? undefined
     : `${fadeIn} 0.5s ease forwards`;
 
+  // const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
     <Box>
       <Flex
         w="100vw"
         h="20vh"
+        display={{ base: "none", sm: "none", md: "none", lg: "flex" }}
         animation={isHeaderActive ? fadeOutAnimation : fadeInAnimation}
       >
         <Flex
@@ -52,6 +58,7 @@ const Header: React.FC = () => {
           shadow="sm"
           py={4}
           px={8}
+          zIndex={1}
         >
           <Flex w="30vw" pt={4} pl={12}>
             <Box>JOURNEY TO THINK</Box>
@@ -98,9 +105,8 @@ const Header: React.FC = () => {
 
       <Flex
         w="100vw"
-        h="20vh"
+        display={{ base: "none", sm: "none", md: "none", lg: "flex" }}
         animation={isHeaderActive ? fadeInAnimation : fadeOutAnimation}
-        zIndex={10000}
       >
         <Flex
           as="header"
@@ -111,6 +117,7 @@ const Header: React.FC = () => {
           shadow="sm"
           py={4}
           px={8}
+          zIndex={1}
         >
           <Flex w="30vw">
             <Box>
@@ -139,6 +146,49 @@ const Header: React.FC = () => {
                 rounded="full"
                 icon={<SearchIcon w={7} h={7} />}
               />
+            </Box>
+            <Spacer />
+            <Box pt={3}>
+              <IconButton
+                bg="transparent"
+                aria-label="search"
+                color="black"
+                rounded="full"
+                icon={<HamburgerIcon w={7} h={7} />}
+              />
+            </Box>
+          </Flex>
+        </Flex>
+      </Flex>
+
+      <Flex
+        w="100vw"
+        display={{ base: "flex", sm: "flex", md: "flex", lg: "none" }}
+      >
+        <Flex
+          as="header"
+          justify="center"
+          position="fixed"
+          top={0}
+          width="full"
+          shadow="sm"
+          py={4}
+          px={8}
+          zIndex={1}
+        >
+          <Flex w="100%">
+            <Box pt={3}>
+              <IconButton
+                bg="transparent"
+                aria-label="search"
+                color="black"
+                rounded="full"
+                icon={<SearchIcon w={7} h={7} />}
+              />
+            </Box>
+            <Spacer />
+            <Box>
+              <Text fontSize="4xl">MIRAIDO</Text>
             </Box>
             <Spacer />
             <Box pt={3}>

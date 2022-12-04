@@ -26,6 +26,34 @@ const HorizontalWithMediumImageArticles: React.FC<
     pauseOnHover: true,
     centerMode: true,
     arrows: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+          centerMode: false,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerMode: false,
+        },
+      },
+    ],
   };
 
   const sliderRef = useRef<Slider | null>(null);
@@ -39,13 +67,26 @@ const HorizontalWithMediumImageArticles: React.FC<
       bgColor={backgroundColor}
       color={fontColor}
     >
-      <Grid templateColumns="repeat(4, 1fr)" gap={6}>
+      <Grid
+        templateColumns={{
+          base: "repeat(1, 1fr)",
+          sm: "repeat(1, 1fr)",
+          md: "repeat(2, 1fr)",
+          lg: "repeat(4, 1fr)",
+        }}
+        gap={6}
+      >
         <GridItem w="100%">
           <Stack>
             <Text fontSize="5xl" marginBottom="3vw">
               {title}
             </Text>
-            <Box marginLeft="30vw" marginRight="5vw" marginTop="50px">
+            <Box
+              marginLeft="30vw"
+              marginRight="5vw"
+              marginTop="50px"
+              display={{ base: "none", sm: "none", md: "none", lg: "block" }}
+            >
               <Box
                 position="relative"
                 display="inline-block"

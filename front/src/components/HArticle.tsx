@@ -17,12 +17,29 @@ const Article: React.FC<ArticleProps> = ({
   return (
     <HStack w="80%" paddingBottom="calc((100vw / 1440) * 60);">
       <Box
-        w="calc((100vw / 1440) * 254);"
-        paddingRight="calc((100vw / 1440) * 30);"
+        w={{
+          base: "100%",
+          sm: "100%",
+          md: "100%",
+          lg: "calc((100vw / 1440) * 254);",
+        }}
+        paddingRight={{
+          base: "0px",
+          sm: "0px",
+          md: "0px",
+          lg: "calc((100vw / 1440) * 30);",
+        }}
       >
         <Image src={imageUrl} alt="Dan Abramov" />
       </Box>
-      <Box w="calc((100vw / 1440) * 254);">
+      <Box
+        w={{
+          base: "100%",
+          sm: "100%",
+          md: "100%",
+          lg: "calc((100vw / 1440) * 254);",
+        }}
+      >
         {category && (
           <Text fontSize="md" color="#b34023">
             {category}
