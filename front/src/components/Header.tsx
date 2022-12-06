@@ -7,10 +7,20 @@ import {
   Text,
   keyframes,
   usePrefersReducedMotion,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  Stack,
+  Divider,
 } from "@chakra-ui/react";
 
 import { SearchIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useHeaderScroll } from "../hooks/useHeaderScroll";
+import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
 const fadeOut = keyframes`
    from { opacity: 1;}
@@ -39,6 +49,8 @@ const Header: React.FC = () => {
   const fadeInAnimation = prefersReducedMotion
     ? undefined
     : `${fadeIn} 0.5s ease forwards`;
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   // const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
@@ -198,10 +210,43 @@ const Header: React.FC = () => {
                 color="black"
                 rounded="full"
                 icon={<HamburgerIcon w={7} h={7} />}
+                onClick={onOpen}
               />
             </Box>
           </Flex>
         </Flex>
+
+        <Modal isOpen={isOpen} onClose={onClose} size="full">
+          <ModalOverlay />
+          <ModalContent backgroundColor="#fae6d0">
+            <ModalHeader></ModalHeader>
+            <ModalCloseButton />
+            <ModalBody paddingTop="20vw">
+              <Stack>
+                <Text fontSize="2xl">JOURNEY TO THINK</Text>
+                <Text fontSize="2xl">JOURNEY FOR ACTION</Text>
+                <Text fontSize="2xl">FEATURE</Text>
+                <Text fontSize="2xl">SPOT</Text>
+                <Text fontSize="2xl">STORE</Text>
+              </Stack>
+              <Divider
+                marginY="20px"
+                borderWidth="0.5px"
+                borderColor="#1D0E0E"
+              />
+              <Stack>
+                <Text fontSize="md">ABOUT</Text>
+                <Text fontSize="md">MEMBER</Text>
+                <Text fontSize="md">CONTACT</Text>
+              </Stack>
+              <Stack direction={"row"} spacing={6} marginTop="30px">
+                <FaTwitter />
+                <FaYoutube />
+                <FaInstagram />
+              </Stack>
+            </ModalBody>
+          </ModalContent>
+        </Modal>
       </Flex>
     </Box>
   );
